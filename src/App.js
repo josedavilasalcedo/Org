@@ -5,6 +5,7 @@ import Formulario from './componentes/Formulario/Formulario';
 import MiOrg from './componentes/MiOrg';
 import { useState } from 'react';
 import Equipo from './componentes/Equipo';
+import Footer from './componentes/Footer';
 
 function App() {
 
@@ -84,6 +85,8 @@ function App() {
         />
         )
       }
+
+      <Footer />
 
     </div>
   );

@@ -10,7 +10,38 @@ import Footer from './componentes/Footer';
 function App() {
 
   const [mostrarFormulario, actualizarMostrar] = useState(false)
-  const [colaboradores, actualizarColaboradores] = useState([])
+  const [colaboradores, actualizarColaboradores] = useState([
+    {
+      equipo: "Front End",
+      foto: "https://github.com/harlandlohora.png", // Verifica esta URL
+      nombre: "Harland Lohora",
+      puesto: "Instructor"
+    },
+    {
+      equipo: "Programación",
+      foto: "https://github.com/JeanmarieAluraLatam.png", // Prueba con avatars de GitHub
+      nombre: "Genesys Rondón",
+      puesto: "Desarrolladora de software e instructora"
+    },
+    {
+      equipo: "UX y Diseño",
+      foto: "https://github.com/JeanmarieAluraLatam.png",
+      nombre: "Jeanmarie Quijada",
+      puesto: "Instructora en Alura Latam"
+    },
+    {
+      equipo: "Programación",
+      foto: "https://github.com/christianpva.png", // Verifica esta URL
+      nombre: "Christian Velasco",
+      puesto: "Head de Alura e Instructor"
+    },
+    {
+      equipo: "Innovación y Gestión",
+      foto: "https://github.com/JoseDarioGonzalezCha.png", // Verifica esta URL
+      nombre: "Jose Gonzalez",
+      puesto: "Dev FullStack"
+    }
+  ])
 
   //Ternario --> condicion ? seMuestra : noSeMuestra
   const cambiarMostrar = () => {
@@ -22,6 +53,11 @@ function App() {
     console.log("Nuevo colaborador", colaborador)
     //Spread operator
     actualizarColaboradores([...colaboradores, colaborador])
+  }
+
+  // Eliminar colaborador
+  const eliminarColaborador = () => {
+    console.log("Eliminar colaborador")
   }
 
   //Lista de equipos
@@ -82,6 +118,7 @@ function App() {
           datos={equipo}
           key={equipo.titulo}
           colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
+          eliminarColaborador={eliminarColaborador}
         />
         )
       }

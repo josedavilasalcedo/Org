@@ -35,17 +35,17 @@ function App() {
     },
     {
       id: uuid(),
+      equipo: "Innovación y  Gestión",
+      foto: "https://github.com/JoseDarioGonzalezCha.png", // Verifica esta URL
+      nombre: "Jose Gonzalez",
+      puesto: "Dev FullStack"
+    },
+    {
+      id: uuid(),
       equipo: "Programación",
       foto: "https://github.com/christianpva.png", // Verifica esta URL
       nombre: "Christian Velasco",
       puesto: "Head de Alura e Instructor"
-    },
-    {
-      id: uuid(),
-      equipo: "Innovación y Gestión",
-      foto: "https://github.com/JoseDarioGonzalezCha.png", // Verifica esta URL
-      nombre: "Jose Gonzalez",
-      puesto: "Dev FullStack"
     }
   ])
 
@@ -107,8 +107,10 @@ function App() {
   }
 
   // Eliminar colaborador
-  const eliminarColaborador = () => {
-    console.log("Eliminar colaborador")
+  const eliminarColaborador = (id) => {
+    console.log("Eliminar colaborador", id)
+    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id )
+    actualizarColaboradores(nuevosColaboradores)
   }
   //Actualizar color de equipo
   const actualizarColor = (color, id) => {

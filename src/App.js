@@ -17,35 +17,40 @@ function App() {
       equipo: "Front End",
       foto: "https://github.com/harlandlohora.png", // Verifica esta URL
       nombre: "Harland Lohora",
-      puesto: "Instructor"
+      puesto: "Instructor",
+      fav: true
     },
     {
       id: uuid(),
       equipo: "Programación",
       foto: "https://github.com/JeanmarieAluraLatam.png", // Prueba con avatars de GitHub
       nombre: "Genesys Rondón",
-      puesto: "Desarrolladora de software e instructora"
+      puesto: "Desarrolladora de software e instructora",
+      fav: true
     },
     {
       id: uuid(),
       equipo: "UX y Diseño",
       foto: "https://github.com/JeanmarieAluraLatam.png",
       nombre: "Jeanmarie Quijada",
-      puesto: "Instructora en Alura Latam"
+      puesto: "Instructora en Alura Latam",
+      fav: false
     },
     {
       id: uuid(),
       equipo: "Innovación y  Gestión",
       foto: "https://github.com/JoseDarioGonzalezCha.png", // Verifica esta URL
       nombre: "Jose Gonzalez",
-      puesto: "Dev FullStack"
+      puesto: "Dev FullStack",
+      fav: false
     },
     {
       id: uuid(),
       equipo: "Programación",
       foto: "https://github.com/christianpva.png", // Verifica esta URL
       nombre: "Christian Velasco",
-      puesto: "Head de Alura e Instructor"
+      puesto: "Head de Alura e Instructor",
+      fav: false
     }
   ])
 
@@ -53,7 +58,7 @@ function App() {
     {
       id: uuid(),
       titulo: "Programación",
-      colorPrimario: "#57C278 ",
+      colorPrimario: "#57C278",
       colorSecundario: "#D9F7E9"
     },
     {
@@ -126,6 +131,23 @@ function App() {
     actualizarEquipos(equiposActualizados)
   }
 
+  // Crear equipo
+  const crearEquipo = (nuevoEquipo) => {
+    console.log(nuevoEquipo)
+    actualizarEquipos([...equipos, {...nuevoEquipo, id: uuid()}])
+  }
+
+  const like = (id) => {
+    console.log("like", id);
+    const colaboradoresActualizados = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        return { ...colaborador, fav: !colaborador.fav }; // Clona el objeto y actualiza la propiedad fav
+      }
+      return colaborador; // Retorna el colaborador sin cambios si no coincide
+    });
+    actualizarColaboradores(colaboradoresActualizados); // Actualiza el estado
+  };
+  
 
   return (
     <div>
@@ -134,6 +156,7 @@ function App() {
       {mostrarFormulario && <Formulario
         equipos={equipos.map((equipo) => equipo.titulo)}
         registrarColaborador={registrarColaborador}
+        crearEquipo={crearEquipo}
       />
 
       }
@@ -147,6 +170,7 @@ function App() {
           colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
           eliminarColaborador={eliminarColaborador}
           actualizarColor={actualizarColor}
+          like={like}
         />
         )
       }

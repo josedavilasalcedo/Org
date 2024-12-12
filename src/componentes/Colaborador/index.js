@@ -1,12 +1,12 @@
 import "./Colaborador.css"
-import {AiFillCloseCircle} from "react-icons/ai"
+import { IoHeartOutline, IoHeartSharp, IoCloseCircle  } from "react-icons/io5";
 
 const Colaborador = (props) => {
-    const {nombre, puesto, foto, equipo, id} = props.datos
-    const {colorPrimario, eliminarColaborador} = props
+    const {nombre, puesto, foto, equipo, id, fav} = props.datos
+    const {colorPrimario, eliminarColaborador, like} = props
 
     return <div className="colaborador">
-        <AiFillCloseCircle className="eliminar" onClick={() => eliminarColaborador(id)} />
+        <IoCloseCircle  className="eliminar" onClick={() => eliminarColaborador(id)} />
         <div className="encabezado" style={{backgroundColor: colorPrimario}}>
             <img 
             src={foto} alt={nombre} />
@@ -14,6 +14,8 @@ const Colaborador = (props) => {
         <div className="info">
             <h4>{nombre}</h4>
             <h5>{puesto}</h5>
+            {fav ? <IoHeartSharp color="red" onClick={()=> like(id)} /> : <IoHeartOutline onClick={()=> like(id)} />}
+       
          </div>
 
     </div>

@@ -19,3 +19,15 @@
     right: 16%;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 25px;
+    }
+
+    .orgSection img {
+        width: 20%;
+        right: 2%;
+    }
+
+}
